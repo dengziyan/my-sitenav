@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>左边滑进来的侧边导航栏</title>
+	<style>
+		*{margin:0;padding:0;}
+		li{list-style: none;}
+		.mask{
+			position: fixed; left: 0; top: 0; bottom: 0; right: 0;
+			z-index: 9999; background-color: rgba(0,0,0,.2);
+			display: none;
+		}
+		/*顶部 侧边导航*/
+		.side-nav{
+			width: 100px; position: fixed; left: -120px; top: 0; bottom: 0; box-sizing: border-box;
+			background-color: pink;
+			padding: 10px;
+			z-index: 9999;
+			color: #333;
+		}
+
+		.side-nav .i-close{font-style: normal; width: 30px;height: 30px;line-height: 30px;text-align: center;font-size: 20px;position: absolute;z-index: 11;background: rgba(1,1,1,0.2);right: 10px;border-radius: 50%;top: 10px;color: #fff; }
+		.side-nav .mu-list{padding-top: .3rem;}
+		.side-nav .mu-list li{height: 30px; line-height: 30px;margin-bottom: 15px;}
+		.side-nav .mu-list li a{ color:#333;}
+
+	</style>
+</head>
+<body>
+	<button>点击出侧边栏</button>
+	<div class="box">
+		<!--	侧边导航-->
+		<div class="mask"></div>
+		<div class="side-nav">
+			<i class="i-close">×</i>
+			<ul class="mu-list">
+				<li>菜单1</li>
+				<li>菜单2</li>
+				<li>菜单3</li>
+				<li>菜单4</li>
+				<li>菜单5</li>
+				<li>菜单6</li>
+				<li>菜单7</li>
+				<li>菜单8</li>
+			</ul>
+		</div>
+	</div>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script>
+		$('button').on("click",function(){
+			$('.mask').show();
+			$('.side-nav').animate({left:"0"},"fast");
+		})
+		$('.i-close,.mask').on("click",function(){
+			$('.side-nav').animate({left:"-120px"},"fast",function(){
+				$('.mask').hide();
+			});
+		})
+	</script>
+</body>
+</html>
